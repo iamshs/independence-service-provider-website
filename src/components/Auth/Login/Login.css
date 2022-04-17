@@ -75,3 +75,11 @@
 .login-container button:hover {
     box-shadow: none;
 }
+.error-message{
+    font-size: 14px;
+    color: red;
+    margin:10px;
+}
+.error-message::before{
+    content: "❌ ";
+}
