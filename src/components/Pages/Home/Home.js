@@ -17,7 +17,7 @@ const Home = () => {
 
          {/* showing--services */}
          <div>
-         <h1 className='text-center my-5'>Our Services</h1>
+         <h1 style={{color:'#F4BB44'}} className='text-center my-5'>Our Services</h1>
             <div className="service-container mx-auto">
             {
                  services.map(service=><Service

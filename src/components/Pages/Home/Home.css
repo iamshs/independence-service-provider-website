@@ -9,7 +9,7 @@
 
 
 
-@media screen and (max-width:572px) {
+@media screen and (max-width:576px) {
     .service-container{
         display: grid;
         grid-template-columns: repeat(1,1fr);

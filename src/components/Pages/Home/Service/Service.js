@@ -7,12 +7,12 @@ const Service = ({ service }) => {
         
           
             <div className="service">
-                <img className='w-75 m-1 rounded' src={img} alt="" />
-                <h3 className=' ms-2 my-3'>{name}</h3>
-                <h1 className='ms-2 my-2'>Price:{price}</h1>
-                <p  className='ms-2 my-2'>{description}</p>
+                <img className='w-100 lg-p-1  rounded' src={img} alt="" />
+                <h3 className=' lg-ms-2  my-3'>{name}</h3>
+                <h1 className='lg-ms-2 lg-my-2'>Price:{price}</h1>
+                <p  className='lg-ms-2 lg-my-2'>{description}</p>
 
-                <button className='rounded w-100 border-1'>CheckOut</button>
+                <button className='rounded w-100  '>CheckOut</button>
             </div>
 
        
