@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init'
 import './Login.css'
@@ -20,9 +20,9 @@ const Login = () => {
     const [errors, setErrors] = useState({
         email: '',
         pass: '',
-        others: ""
+        
     })
-
+//handling Email
     const handleEmail = e => {
         const emailRegex = /\S+@\S+\.\S+/
         const validEmail = emailRegex.test(e.target.value)
@@ -36,7 +36,7 @@ const Login = () => {
         }
 
     }
-
+//handling password
     const handlePassword = e => {
         const passRegex = /.{8,}/;
         const validPass = passRegex.test(e.target.value)
@@ -49,11 +49,21 @@ const Login = () => {
             setUserInfo({ ...userInfo, pass: '' })
         }
     }
-
+//handling login
     const handleLogin = e => {
         e.preventDefault()
         signInWithEmailAndPassword(userInfo.email, userInfo.pass)
     }
+//handling private route navigation
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+   useEffect(() => {
+        if (user) {
+            navigate(from);
+        }
+    }, [user]);
 
     return (
         <div className="login-container">
