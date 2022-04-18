@@ -4,20 +4,20 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvdAwaj9yl7cEt5cjhFVzjjDLCd_fVMxTcdA&usqp=CAU",
         "price": "$78.90",
         "name": "Portrait Photography",
-        "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+        "description": "Portrait photography is about capturing the essence, personality, identity and attitude of a person utilizing backgrounds, lighting and posing."
     },
     {
         "id": 2,
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWNT3K2-ky2GEnrsbf0g05mrCiT9YerXKbyQ&usqp=CAU",
         "price": "$88.25",
         "name": "Nature Photography",
-        "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. "
+        "description": "When words become unclear, I shall focus with photographs. When images become inadequate, I shall be content with silence.Nature never goes out of style."
     },
     {
         "id": 3,
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Y_mSLILnFgS22qw2pc0hTkbc9YFHVHctQQ&usqp=CAU",
         "price": "$98.13",
         "name": "Stock Photos",
-        "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus."
+        "description": "High-quality photos that are already created and made available for licensing, to use in multiple creative ways"
     }
 ]

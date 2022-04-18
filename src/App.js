@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Blogs from './components/Pages/Blogs/Blogs';
@@ -17,9 +17,9 @@ function App() {
     <div>
       <Header></Header>
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/blogs' element={<Blogs></Blogs>}/>
-        <Route path='/aboutme' element={<AboutMe></AboutMe>}/>
+        <Route path='/' element={<Home />} />
+        <Route path='/blogs' element={<Blogs></Blogs>} />
+        <Route path='/aboutme' element={<AboutMe></AboutMe>} />
         <Route path='/checkout' element={
           <RequireAuth>
             <CheckOut></CheckOut>
@@ -27,7 +27,7 @@ function App() {
         } />
         <Route path='/login' element={<Login></Login>} />
         <Route path='/signup' element={<Signup></Signup>} />
-        <Route path='*' element={<NotFound/>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer></Footer>
     </div>

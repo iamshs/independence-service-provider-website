@@ -11,7 +11,7 @@ const Signup = () => {
         user,
         
         hookError,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
 
     const [userInfo,  setUserInfo] = useState({
         email: "",
@@ -109,7 +109,7 @@ const Signup = () => {
                 <input type="password" placeholder="confirm password" onChange={handleConfirmPass} required />
                 {errors?.confirmPass && <p className="error-message">{errors.confirmPass}</p>}
 
-                <button>Sign up</button>
+                <button type='submit'>Sign up</button>
 
 
                 <ToastContainer />

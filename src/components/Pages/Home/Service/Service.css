@@ -1,9 +1,9 @@
 .service{
     width: 410px;
-    margin-left: 50px;
+  
     border: 1px solid rgb(255, 144, 34);
     border-radius: 10px;
-    background-color: rgba(247, 244, 244, 0.812);
+    
     
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

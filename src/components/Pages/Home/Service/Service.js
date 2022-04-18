@@ -11,7 +11,7 @@ const Service = ({ service }) => {
     return (
         
           
-            <div className="service">
+            <div className="service bg-light">
                 <img className='w-100 lg-p-1  rounded' src={img} alt="" />
                 <h3 className=' lg-ms-2  my-3'>{name}</h3>
                 <h1 className='lg-ms-2 lg-my-2'>Price:{price}</h1>

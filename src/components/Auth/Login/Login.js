@@ -68,6 +68,12 @@ const Login = () => {
         }
     }, [user]);
 
+    //google user navigate
+
+    if (googleUser){
+        navigate('/')
+    }
+
     //hook and google error handling
     useEffect(() => {
         const error = hookError || googleError;
@@ -102,7 +108,7 @@ const Login = () => {
                 <p>Don't have an account? <Link to="/signup">Sign up first</Link> </p>
             </form>
 
-            <button onClick={() => signInWithGoogle()} >Google</button>
+            <button type='submit' onClick={() => signInWithGoogle()} >Google</button>
             
         </div>
     );

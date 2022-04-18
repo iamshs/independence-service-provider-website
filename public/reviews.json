@@ -1,0 +1,20 @@
+[
+    {
+        "id": 111,
+        "name": "Abby",
+        "reviews": "Easily the best experience with a photographer to date!",
+        "ratings": 4
+    },
+    {
+        "id": 112,
+        "name": "Diviny",
+        "reviews": "I am so glad that I stumbled across (Wild Life) Photography",
+        "ratings": 5
+    },
+    {
+        "id": 113,
+        "name": "Rosina",
+        "reviews": "He is super creative and is genuinely a nice guy.",
+        "ratings": 4
+    }
+]
