@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init'
 import './Login.css'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
 
@@ -14,8 +15,9 @@ const Login = () => {
 
         hookError,
     ] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle,googleUser,googleError] = useSignInWithGoogle(auth);
-
+    const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
+    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
+        auth);
     const [userInfo, setUserInfo] = useState({
         email: "",
         pass: ""
@@ -70,9 +72,11 @@ const Login = () => {
 
     //google user navigate
 
-    if (googleUser){
+    if (googleUser) {
         navigate('/')
     }
+    //reset password
+
 
     //hook and google error handling
     useEffect(() => {
@@ -80,10 +84,10 @@ const Login = () => {
         if (error) {
             switch (error?.code) {
                 case "auth/invalid-email":
-                   toast("Please provide a valid email");
+                    toast("Please provide a valid email");
                     break;
                 case "auth/popup-closed-by-user":
-                   toast("Pop-up Closed By User");
+                    toast("Pop-up Closed By User");
                     break;
 
                 case "auth/invalid-password":
@@ -99,17 +103,25 @@ const Login = () => {
         <div className="login-container">
             <div className="login-title">LOGIN</div>
             <form className="login-form" onSubmit={handleLogin}>
-                <input type="text" placeholder="Your Email" onChange={handleEmail} required/>
+                <input type="text" placeholder="Your Email" onChange={handleEmail} required />
                 {errors?.email && <p className="error-message">{errors.email}</p>}
                 <input type="password" placeholder="password" onChange={handlePassword} required />
                 {errors?.pass && <p className="error-message">{errors.pass}</p>}
-                <button>Login</button>
+                <button className='login-button' >Login</button>
                 <ToastContainer />
                 <p>Don't have an account? <Link to="/signup">Sign up first</Link> </p>
+                <p >  <button
+                    onClick={async () => {
+                        await sendPasswordResetEmail(userInfo.email);
+                        toast('Sent email');
+                    }}
+                >
+                    Reset password
+                </button> </p>
             </form>
 
-            <button type='submit' onClick={() => signInWithGoogle()} >Google</button>
-            
+            <button type='submit' className='login-button' onClick={() => signInWithGoogle()} >Google</button>
+
         </div>
     );
 };

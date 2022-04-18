@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import './Service.css'
 
 const Service = ({ service }) => {
-    const { name, price, img, description } = service
+    const { name, price, img, description,id } = service
     const navigate = useNavigate()
-    const navigateToCheckOut =()=>{
-        navigate('/checkout')
+    const navigateToCheckOut =(id)=>{
+        navigate(`/checkout/${id}`)
     }
+
+    
     return (
         
           
@@ -17,7 +19,7 @@ const Service = ({ service }) => {
                 <h1 className='lg-ms-2 lg-my-2'>Price:{price}</h1>
                 <p  className='lg-ms-2 lg-my-2'>{description}</p>
 
-                <button onClick={navigateToCheckOut} className='rounded w-100  '>CheckOut</button>
+                <button onClick={()=>navigateToCheckOut(id)} className='rounded w-100  '>CheckOut</button>
             </div>
 
        

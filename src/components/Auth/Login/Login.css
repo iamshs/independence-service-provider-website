@@ -60,7 +60,7 @@
     box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 
-.login-container button {
+.login-button {
     color: white;
     margin-top: 20px;
     background: #f25d1d;;
