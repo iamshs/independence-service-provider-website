@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init'
 import './Login.css'
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
+
         hookError,
     ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle,googleUser,googleError] = useSignInWithGoogle(auth);
 
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -20,9 +23,9 @@ const Login = () => {
     const [errors, setErrors] = useState({
         email: '',
         pass: '',
-        
+
     })
-//handling Email
+    //handling Email
     const handleEmail = e => {
         const emailRegex = /\S+@\S+\.\S+/
         const validEmail = emailRegex.test(e.target.value)
@@ -36,7 +39,7 @@ const Login = () => {
         }
 
     }
-//handling password
+    //handling password
     const handlePassword = e => {
         const passRegex = /.{8,}/;
         const validPass = passRegex.test(e.target.value)
@@ -49,37 +52,58 @@ const Login = () => {
             setUserInfo({ ...userInfo, pass: '' })
         }
     }
-//handling login
+    //handling login
     const handleLogin = e => {
         e.preventDefault()
         signInWithEmailAndPassword(userInfo.email, userInfo.pass)
     }
-//handling private route navigation
+    //handling private route navigation
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-   useEffect(() => {
+    useEffect(() => {
         if (user) {
             navigate(from);
         }
     }, [user]);
 
+    //hook and google error handling
+    useEffect(() => {
+        const error = hookError || googleError;
+        if (error) {
+            switch (error?.code) {
+                case "auth/invalid-email":
+                   toast("Please provide a valid email");
+                    break;
+                case "auth/popup-closed-by-user":
+                   toast("Pop-up Closed By User");
+                    break;
+
+                case "auth/invalid-password":
+                    toast("Wrong password. Intruder!!")
+                    break;
+                default:
+                    toast("something went wrong")
+            }
+        }
+    }, [hookError, googleError])
+
     return (
         <div className="login-container">
             <div className="login-title">LOGIN</div>
             <form className="login-form" onSubmit={handleLogin}>
-                <input type="text" placeholder="Your Email" onChange={handleEmail} />
+                <input type="text" placeholder="Your Email" onChange={handleEmail} required/>
                 {errors?.email && <p className="error-message">{errors.email}</p>}
-                <input type="password" placeholder="password" onChange={handlePassword} />
+                <input type="password" placeholder="password" onChange={handlePassword} required />
                 {errors?.pass && <p className="error-message">{errors.pass}</p>}
                 <button>Login</button>
-
+                <ToastContainer />
                 <p>Don't have an account? <Link to="/signup">Sign up first</Link> </p>
             </form>
 
-            <button >Google</button>
-            <ToastContainer/>
+            <button onClick={() => signInWithGoogle()} >Google</button>
+            
         </div>
     );
 };

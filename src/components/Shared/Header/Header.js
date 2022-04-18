@@ -14,23 +14,24 @@ const Header = () => {
     }
     return (
         <nav>
-            <Navbar collapseOnSelect expand="xl" sticky='top' bg="light" >
+            <Navbar className="navbar" collapseOnSelect expand="lg" bg='light' sticky='top'  >
                 <Container>
-                    <Navbar.Brand as={Link} to="/">
+                    <Navbar.Brand className="nav-link fw-bold fs-3" as={Link} to="/">
                         WILD Life
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to='/'>Home</Nav.Link>
+                            <Nav.Link className=" fw-bolder " as={Link} to='/'>Home</Nav.Link>
 
-                            <Nav.Link as={Link} to='/blogs'>Blogs</Nav.Link>
+                            <Nav.Link className=" fw-bolder" as={Link} to='/blogs'>Blogs</Nav.Link>
+                            <Nav.Link className="fw-bolder" as={Link} to='/aboutme'>About</Nav.Link>
 
                         </Nav>
                         <Nav>
-                            <Nav.Link as={Link} to='/aboutme'>About Me</Nav.Link>
+                           
                             {
-                                user ? (<button className="signout-btn" onClick={handleSignOut}>SignOut</button>) : (<Nav.Link as={Link} to="login">
+                                user ? (<button className="signout-btn text-muted fw-bolder" onClick={handleSignOut}>SignOut</button>) : (<Nav.Link className=" fw-bolder" as={Link} to="login">
                                     Login
                                 </Nav.Link>)
                             }

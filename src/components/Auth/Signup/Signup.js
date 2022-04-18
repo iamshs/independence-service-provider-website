@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
     const [
@@ -12,7 +13,7 @@ const Signup = () => {
         hookError,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    const [userInfo, setUserInfo] = useState({
+    const [userInfo,  setUserInfo] = useState({
         email: "",
         pass: "",
         confirmPass: "",
@@ -101,11 +102,11 @@ const Signup = () => {
         <div className="login-container">
             <div className="login-title">Sign up</div>
             <form className="login-form" onSubmit={handleSignUp}>
-                <input type="text" placeholder="Your Email" onChange={handleEmail} />
+                <input type="text" placeholder="Your Email" onChange={handleEmail} required/>
                 {errors?.email && <p className="error-message">{errors.email}</p>}
-                <input type='password' placeholder="password" onChange={handlePass} />
+                <input type='password' placeholder="password" onChange={handlePass} required />
                 {errors?.pass && <p className="error-message">{errors.pass}</p>}
-                <input type="password" placeholder="confirm password" onChange={handleConfirmPass} />
+                <input type="password" placeholder="confirm password" onChange={handleConfirmPass} required />
                 {errors?.confirmPass && <p className="error-message">{errors.confirmPass}</p>}
 
                 <button>Sign up</button>
